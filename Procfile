@@ -1,1 +1,1 @@
-python3 kbot.py
+worker: python3 kbot.py
