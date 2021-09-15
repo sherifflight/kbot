@@ -8,4 +8,4 @@ kbot = telebot.TeleBot(token)
 
 def start_handler(message):
     kbot.send_message(message.chat.id, 'Hello world, bleat')
-bot.polling
+kbot.polling
