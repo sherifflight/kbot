@@ -1,1 +1,1 @@
-worker: python3 kbot.py
+web: ado start
