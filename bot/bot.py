@@ -13,6 +13,17 @@ dp = Dispatcher(bot)
 dp.middleware.setup(LoggingMiddleware())
 
 
+@dp.message_handler(commands=['hello'])
+async def send_welcome(message: types.Message):
+    await message.reply('Hi!\n Im KBot.')
+
+
+@dp.message_handler(regexp='(^cat[s]?$|puss|кот[ик]|киса)')
+async def cat(message: types.Message):
+    with open('data/cats.jpg') as photo:
+        await message.reply_photo(photo, caption='Cats r here.')
+
+
 async def on_startup():
     logging.warning('Starting connection.')
     await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
