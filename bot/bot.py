@@ -24,12 +24,12 @@ async def cat(message: types.Message):
         await message.reply_photo(photo, caption='Cats r here.')
 
 
-async def on_startup():
+async def on_startup(dp):
     logging.warning('Starting connection.')
     await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
 
 
-async def on_shutdown():
+async def on_shutdown(dp):
     logging.warning('Shutting down webhook connection.')
 
 
