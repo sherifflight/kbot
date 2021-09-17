@@ -1,6 +1,6 @@
 import logging
 
-from aiogram import Bot, types
+from aiogram import Bot, types, executor
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils.executor import start_webhook
@@ -19,8 +19,8 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler(regexp='(^cat[s]?$|puss|кот[ик]|киса)')
-async def cat(message: types.Message):
-    with open('data/cats.jpg') as photo:
+async def cats(message: types.Message):
+    with open('data/cats.jpg', 'rb') as photo:
         await message.reply_photo(photo, caption='Cats r here.')
 
 
@@ -43,3 +43,6 @@ def main():
         host=WEBAPP_HOST,
         port=WEBAPP_PORT,
     )
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
